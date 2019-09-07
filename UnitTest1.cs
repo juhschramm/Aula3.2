@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace XUnitTestProject1
@@ -24,11 +25,37 @@ namespace XUnitTestProject1
                 EspessuraDoCasco = 2
             };
 
-
             Desmontar(fiesta);
             Desmontar(logan);
-
             Desmontar(superBarco);
+
+            var veiculos = new List<IVeiculo>();
+            veiculos.Add(fiesta);
+            veiculos.Add(logan);
+            veiculos.Add(superBarco);
+
+        }
+
+        public void CulculaDisponibilidade(List<IVeiculo> veiculos)
+        {
+            foreach (var veiculo in veiculos)
+            {
+                if (veiculo is Carro carro)
+                    CalculaDisponibilidade(carro);
+
+                if (veiculo is IBarcoMotor superBarco)
+                    CalculaDisponibilidade(superBarco);
+            }
+        }
+
+        private void CalculaDisponibilidade(Carro carro)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CalculaDisponibilidade(IBarcoMotor superBarco)
+        {
+            throw new NotImplementedException();
         }
 
         public void Desmontar(Carro carro)
